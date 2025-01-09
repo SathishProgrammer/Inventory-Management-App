@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class DeleteItem {
-	public static void deleteProduct() {
-		Scanner input = new Scanner(System.in);
+	public static void deleteProduct(Scanner input) {
 		System.out.println("Enter the Product name: ");
+		input.nextLine(); // To consume extra line
 		String name = input.nextLine();
 		
 		if(ViewItem.getProductName(name) == false) {
@@ -19,8 +19,8 @@ public class DeleteItem {
 			try {
 				PreparedStatement ps = InventoryJdbcConnection.connection.prepareStatement(query);
 				ps.setString(1, name);
-				ps.execute();
-				System.out.println("Deleted Successfully...");
+				int rowsAffected = ps.executeUpdate();
+				System.out.println(rowsAffected + " Row deleted Successfully...");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Menu {
 
 	public static void menu() {
-		Scanner scan = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		boolean isExit = true;
 		
 		while(isExit) {
@@ -18,7 +18,7 @@ public class Menu {
 					+ "5: Exit");
 			
 			System.out.println("\nEnter the Option: ");
-			int choice = scan.nextInt();
+			int choice = input.nextInt();
 			
 			switch (choice) {
 			
@@ -26,7 +26,7 @@ public class Menu {
 				System.out.println("1: View All Products\n"
 						+ "2: View Single Product\n"
 						+ "3: View Low Stock Products");
-				int choice1 = scan.nextInt();
+				int choice1 = input.nextInt();
 				
 				switch (choice1) {
 				
@@ -35,7 +35,7 @@ public class Menu {
 					break;
 					
 				case 2:
-					ViewItem.getProduct();
+					ViewItem.getProduct(input);
 					break;
 					
 				case 3:
@@ -46,15 +46,15 @@ public class Menu {
 				break;
 				
 			case 2:
-				AddItem.addNewItem();
+				AddItem.addNewItem(input);
 				break;
 				
 			case 3:
-				UpdateItem.updateProduct();
+				UpdateItem.updateProduct(input);
 				break;
 				
 			case 4:
-				DeleteItem.deleteProduct();
+				DeleteItem.deleteProduct(input);
 				break;
 				
 			case 5:
@@ -63,6 +63,6 @@ public class Menu {
 				break;
 			}
 		}
-		scan.close();
+		input.close();
 	}
 }
